@@ -26,11 +26,8 @@ class AnthropicClient(LLMClient):
     def answer(self, question: str, sensor_summary: str) -> PlantOutput:
         return self._client.messages.parse(
             max_tokens=self._max_tokens,
+            system=SYSTEM_PROMPT,
             messages=[
-                {
-                    "role": "system",
-                    "content": SYSTEM_PROMPT
-                },
                 {
                     "role": "user",
                     "content": f"{question}\n\nCurrent sensor readings: \n{sensor_summary}"
