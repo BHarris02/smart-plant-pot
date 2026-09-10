@@ -30,8 +30,6 @@ class SmartPlantPotApplication:
         )
         self._output = LaptopSpeakerOutputMethod()
 
-        self._llm.answer("Hello, how are you?", "No summary")
-
     def run(self) -> None:
         """
         Run the smart plant pot application

@@ -33,5 +33,9 @@ LLM_MODEL = getenv("LLM_MODEL")
 LLM_TIMEOUT = float(getenv("LLM_TIMEOUT") or "10.0")
 LLM_MAX_TOKENS = int(getenv("LLM_MAX_TOKENS") or "1024")
 
-if not all([LLM_API_KEY, LLM_BASE_URL, LLM_MODEL]):
+# backend config
+BACKEND_API_URL = getenv("BACKEND_API_URL").lower()
+BACKEND_API_TIMEOUT = float(getenv("BACKEND_API_TIMEOUT") or "10.0")
+
+if not all([LLM_API_KEY, LLM_BASE_URL, LLM_MODEL, BACKEND_API_URL, BACKEND_API_TIMEOUT]):
     raise MissingEnvironmentVariablesException("Some environment variables are not set")

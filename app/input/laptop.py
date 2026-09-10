@@ -36,5 +36,4 @@ class LaptopMicrophoneInputMethod(InputMethod):
             except WaitTimeoutError:
                 return ""
 
-        segments, _ = self._model.transcribe(BytesIO(audio.get_wav_data()))
-        return "".join(segment.text for segment in segments).strip()
+        return self._transcribe(BytesIO(audio.get_wav_data()))
