@@ -28,9 +28,10 @@ class MissingEnvironmentVariablesException(Exception):
 
 # llm config
 LLM_API_KEY = getenv("LLM_API_KEY")
+LLM_BASE_URL = getenv("LLM_BASE_URL")
 LLM_MODEL = getenv("LLM_MODEL")
 LLM_TIMEOUT = float(getenv("LLM_TIMEOUT") or "10.0")
 LLM_MAX_TOKENS = int(getenv("LLM_MAX_TOKENS") or "1024")
 
-if not all([LLM_API_KEY, LLM_MODEL]):
+if not all([LLM_API_KEY, LLM_BASE_URL, LLM_MODEL]):
     raise MissingEnvironmentVariablesException("Some environment variables are not set")

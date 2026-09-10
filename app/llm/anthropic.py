@@ -15,11 +15,12 @@ class AnthropicClient(LLMClient):
     def __init__(
             self,
             api_key: str,
+            base_url: str,
             model: str,
             timeout: float,
             max_tokens: int
         ):
-        self._client = Anthropic(api_key=api_key, timeout=timeout)
+        self._client = Anthropic(api_key=api_key, base_url=base_url, timeout=timeout)
         self._model = model
         self._max_tokens = max_tokens
 

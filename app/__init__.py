@@ -3,6 +3,7 @@ app/__init__.py
 """
 from app.config import (
     LLM_API_KEY,
+    LLM_BASE_URL,
     LLM_MODEL,
     LLM_TIMEOUT,
     LLM_MAX_TOKENS
@@ -22,11 +23,14 @@ class SmartPlantPotApplication:
         self._sensors = [LightSensor(), MoistureSensor()]
         self._llm = AnthropicClient(
             api_key=LLM_API_KEY,
+            base_url=LLM_BASE_URL,
             model=LLM_MODEL,
             timeout=LLM_TIMEOUT,
             max_tokens=LLM_MAX_TOKENS
         )
         self._output = LaptopSpeakerOutputMethod()
+
+        self._llm.answer("Hello, how are you?", "No summary")
 
     def run(self) -> None:
         """
