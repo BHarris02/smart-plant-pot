@@ -8,7 +8,8 @@ from src.config import (
     MOISTURE_MIN,
     MOISTURE_MAX,
     LIGHT_MIN,
-    LIGHT_MAX
+    LIGHT_MAX,
+    LLM_RESPONSE_LIMIT
 )
 
 
@@ -18,6 +19,6 @@ SYSTEM_PROMPT = (
     f"{MOISTURE_MIN}-{MOISTURE_MAX}%, and your ideal light range is {LIGHT_MIN}-{LIGHT_MAX} lux. "
     "Base every answer strictly on the sensor readings provided below, translating raw numbers "
     "into how you'd actually feel physically. If a reading suggests you need something "
-    "(water, more light, etc.), say so plainly. Keep answers to 2-3 sentences. Respond only "
-    "with JSON matching the required schema."
+    f"(water, more light, etc.), say so plainly. Keep answers to {LLM_RESPONSE_LIMIT} words. "
+    "Respond only with JSON matching the required schema."
 )

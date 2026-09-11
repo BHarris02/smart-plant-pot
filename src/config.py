@@ -35,6 +35,7 @@ LLM_BASE_URL = getenv("LLM_BASE_URL")
 LLM_MODEL = getenv("LLM_MODEL")
 LLM_TIMEOUT = float(getenv("LLM_TIMEOUT") or "10.0")
 LLM_MAX_TOKENS = int(getenv("LLM_MAX_TOKENS") or "1024")
+LLM_RESPONSE_LIMIT = int(getenv("LLM_RESPONSE_LIMIT") or "20")
 
 if not all([LLM_API_KEY, LLM_BASE_URL, LLM_MODEL]):
     raise MissingEnvironmentVariablesException("Some environment variables are not set")
