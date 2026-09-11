@@ -17,8 +17,8 @@ class BH1750LightSensor(Sensor):
     """
     name = "bh1750_light_sensor"
 
-    def __init__(self, i2c: board.I2C | None = None):
-        self._sensor = adafruit_bh1750.BH1750(i2c or board.I2C())
+    def __init__(self, i2c: board.I2C | None = None, addr: int = 0x23):
+        self._sensor = adafruit_bh1750.BH1750(i2c or board.I2C(), address=addr)
 
     def read(self) -> SensorReading:
         return SensorReading(
