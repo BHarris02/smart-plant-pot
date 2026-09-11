@@ -47,8 +47,7 @@ def run(
     plant_output = llm.answer(
         req.user_question,
         sensor_summary,
-        image=req.image,
-        image_media_type=req.image_media_type
+        image=req.image
     )
     output.answer_or_express(plant_output.content)
-    return RunResponse(status="ok", content=plant_output.content).model_dump()
+    return RunResponse(content=plant_output.content).model_dump()

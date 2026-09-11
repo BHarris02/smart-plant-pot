@@ -28,8 +28,7 @@ class AnthropicClient(LLMClient):
         self,
         question: str,
         sensor_summary: str,
-        image: str | None = None,
-        image_media_type: str = "image/jpeg"
+        image: str | None = None
     ) -> PlantOutput:
         text_block = {
             "type": "text",
@@ -40,7 +39,7 @@ class AnthropicClient(LLMClient):
             # `image` arrives already base64-encoded by the client; passed through as-is, untouched
             content.insert(0, {
                 "type": "image",
-                "source": {"type": "base64", "media_type": image_media_type, "data": image}
+                "source": {"type": "base64", "media_type": "image/jpeg", "data": image}
             })
 
         return self._client.messages.parse(
