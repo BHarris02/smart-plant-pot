@@ -1,7 +1,0 @@
-flask
-flask_pydantic_spec
-flask-injector
-injector
-python-dotenv
-pydantic
-faster-whisper

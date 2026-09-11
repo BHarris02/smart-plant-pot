@@ -43,3 +43,12 @@ Hardware
 
 Extension
 Extend to window-sill crop pots: Integrate an AI camera and LCD screen with a “Days to Harvest: x” estimate. The “harvest” framing becomes the differentiator compared to generic smart pots.
+
+
+- User speaks to Laptop (SPA)
+- STT on Laptop (Can be done on SPA)
+
+- Collect sensor data via Pi (Python)
+- Pi sends user question + sensor data to LLM (Python)
+- LLM responds (Python)
+- Pi outputs via Audio (Python)
