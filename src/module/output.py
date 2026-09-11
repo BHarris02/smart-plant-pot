@@ -3,9 +3,7 @@ src/module/output.py
 """
 from injector import Module, provider, singleton
 
-from src.output import OutputMethod
-# temp: remove before packaging for production
-from src.output import LaptopSpeakerOutputMethod
+from src.output import OutputMethod, PiSpeakerOutputMethod
 
 
 class OutputModule(Module):
@@ -18,4 +16,4 @@ class OutputModule(Module):
         """
         Provide a concrete `OutputMethod`
         """
-        return LaptopSpeakerOutputMethod()
+        return PiSpeakerOutputMethod()

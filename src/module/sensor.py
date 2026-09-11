@@ -3,9 +3,7 @@ src/module/sensor.py
 """
 from injector import Module, multiprovider, singleton
 
-from src.sensor import Sensor
-# temp: remove before packaging for production
-from src.sensor import MockMoistureSensor, MockLightSensor
+from src.sensor import Sensor, ADA4026SoilSensor, BH1750LightSensor
 
 
 class SensorModule(Module):
@@ -19,6 +17,6 @@ class SensorModule(Module):
         Provide concrete `Sensor`s for all metrics
         """
         return [
-            MockLightSensor(),
-            MockMoistureSensor()
+            BH1750LightSensor(),
+            ADA4026SoilSensor()
         ]

@@ -2,11 +2,9 @@
 app/output/__init__.py
 """
 from .api import OutputMethod
-# temp: remove before packaging for production
-from .laptop import LaptopSpeakerOutputMethod
+from .pi import PiSpeakerOutputMethod
 
 __all__ = [
     "OutputMethod",
-    # temp: remove before packaging for production
-    "LaptopSpeakerOutputMethod"
+    "PiSpeakerOutputMethod"
 ]
