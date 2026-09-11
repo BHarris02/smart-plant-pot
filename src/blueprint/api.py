@@ -44,6 +44,11 @@ def run(
 
     sensor_summary = build_sensor_summary(sensors)
     print(f"[DEBUG] sensor summary:\n{sensor_summary}")
-    plant_output = llm.answer(req.user_question, sensor_summary)
+    plant_output = llm.answer(
+        req.user_question,
+        sensor_summary,
+        image=req.image,
+        image_media_type=req.image_media_type
+    )
     output.answer_or_express(plant_output.content)
-    return RunResponse(status="ok").model_dump()
+    return RunResponse(status="ok", content=plant_output.content).model_dump()

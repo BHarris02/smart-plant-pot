@@ -24,16 +24,29 @@ class AnthropicClient(LLMClient):
         self._model = model
         self._max_tokens = max_tokens
 
-    def answer(self, question: str, sensor_summary: str) -> PlantOutput:
+    def answer(
+        self,
+        question: str,
+        sensor_summary: str,
+        image: str | None = None,
+        image_media_type: str = "image/jpeg"
+    ) -> PlantOutput:
+        text_block = {
+            "type": "text",
+            "text": f"{question}\n\nCurrent sensor readings: \n{sensor_summary}"
+        }
+        content = [text_block]
+        if image is not None:
+            # `image` arrives already base64-encoded by the client; passed through as-is, untouched
+            content.insert(0, {
+                "type": "image",
+                "source": {"type": "base64", "media_type": image_media_type, "data": image}
+            })
+
         return self._client.messages.parse(
             max_tokens=self._max_tokens,
             system=SYSTEM_PROMPT,
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"{question}\n\nCurrent sensor readings: \n{sensor_summary}"
-                }
-            ],
+            messages=[{"role": "user", "content": content}],
             model=self._model,
             output_format=PlantOutput
         ).parsed_output

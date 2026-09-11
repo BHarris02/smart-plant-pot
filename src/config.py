@@ -10,6 +10,8 @@ load_dotenv()
 
 # flask config
 FLASK_SECRET_KEY = getenv("FLASK_SECRET_KEY")
+CORS_ORIGIN = getenv("CORS_ORIGIN", "*")
+MAX_CONTENT_LENGTH = int(getenv("MAX_CONTENT_LENGTH") or str(8 * 1024 * 1024))
 
 # plant config
 PLANT_NAME = getenv("PLANT_NAME", "Planty McPlantface")
