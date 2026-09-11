@@ -1,6 +1,7 @@
 """
 src/sensor/ada4026.py
 """
+from __future__ import annotations
 from datetime import datetime
 
 # pylint: disable=import-error
@@ -18,7 +19,7 @@ class ADA4026SoilSensor(Sensor):
     """
     name = "ada4026_soil_sensor"
 
-    def __init__(self, i2c: board.I2C | None = None, addr: int = 0x36):
+    def __init__(self, i2c: "board.I2C | None" = None, addr: int = 0x36):
         self._sensor = Seesaw(i2c or board.I2C(), addr=addr)
 
     def read(self) -> SensorReading:
