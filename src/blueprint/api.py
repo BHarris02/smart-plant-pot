@@ -43,6 +43,7 @@ def run(
         return RunResponse(status="ok").model_dump()
 
     sensor_summary = build_sensor_summary(sensors)
+    print(f"[DEBUG] sensor summary:\n{sensor_summary}")
     plant_output = llm.answer(req.user_question, sensor_summary)
     output.answer_or_express(plant_output.content)
     return RunResponse(status="ok").model_dump()
